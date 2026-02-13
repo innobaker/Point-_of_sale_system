@@ -1,0 +1,146 @@
+/* ============================================
+   Thermal Printer CSS - POS System
+   User-selected paper size (80mm or 58mm)
+   ============================================ */
+
+/* Normal screen styles */
+@media screen {
+  body {
+    /* Normal body styles remain unchanged */
+  }
+}
+
+/* Print styles - applied when printing */
+@media print {
+  /* Hide the entire page wrapper */
+  .container-fluid,
+  .card,
+  .card-header,
+  .no-print,
+  .paper-size-selector,
+  .btn {
+    display: none !important;
+  }
+  
+  /* Show only the billing area */
+  #myBillingArea {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 5mm !important;
+    background: white !important;
+    font-family: "Courier New", Courier, monospace !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  /* Table styling for items */
+  #myBillingArea table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+  
+  #myBillingArea table td {
+    padding: 2px 0 !important;
+    border: none !important;
+  }
+  
+  /* Remove backgrounds */
+  .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: transparent !important;
+  }
+  
+  /* Hide any nested buttons in billing area */
+  #myBillingArea .btn {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   User-selected paper sizes
+   Applied only when user selects a paper size
+   ============================================ */
+
+/* 80mm Paper Size */
+@media print {
+  body.paper-80mm #myBillingArea {
+    width: 80mm !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+/* 58mm Paper Size */
+@media print {
+  body.paper-58mm #myBillingArea {
+    width: 58mm !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    font-size: 10px !important;
+    line-height: 1.1 !important;
+  }
+  
+  body.paper-58mm #myBillingArea table {
+    font-size: 9px !important;
+  }
+}
+
+/* ============================================
+   Paper Size Selector Buttons (Screen only)
+   ============================================ */
+.paper-size-selector {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.paper-size-btn {
+  padding: 8px 16px;
+  margin: 0 5px;
+  border: 2px solid #0d6efd;
+  background: white;
+  color: #0d6efd;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.paper-size-btn:hover {
+  background: #0d6efd;
+  color: white;
+}
+
+.paper-size-btn.active {
+  background: #0d6efd;
+  color: white;
+}
+
+.paper-size-btn-80 {
+  border-color: #198754;
+  color: #198754;
+}
+
+.paper-size-btn-80:hover,
+.paper-size-btn-80.active {
+  background: #198754;
+  color: white;
+}
+
+.paper-size-btn-58 {
+  border-color: #fd7e14;
+  color: #fd7e14;
+}
+
+.paper-size-btn-58:hover,
+.paper-size-btn-58.active {
+  background: #fd7e14;
+  color: white;
+}
+
